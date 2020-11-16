@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>당신의 꽃</title>
+  </head>
+  <body>
+
+    <script src="./jquery-3.5.1.min.js"></script>
+    <script type="text/javascript">
+      $(function($){
+        var url = 'https://open.neis.go.kr/hub/schoolInfo'
+          + '?KEY=8731825a2b8946889c1759a8f1b69b71'
+          + '&Type=json'
+          + '&pIndex=1'
+          + '&pSize=100'
+          + '&ATPT_OFCDC_SC_CODE=J10'
+          + '&JU_ORG_NM="경기도평택교육지원청"'
+        ;
+
+        var url2 = 'https://open.neis.go.kr/hub/SchoolSchedule'
+          + '?KEY=8731825a2b8946889c1759a8f1b69b71'
+          + '&Type=json'
+          + '&pIndex=1'
+          + '&pSize=1000'
+          + '&ATPT_OFCDC_SC_CODE=J10'
+          + '&SD_SCHUL_CODE=7631019'
+          + '&AA_FROM_YMD=20201101'
+          + '&AA_TO_YMD=20211231'
+        ;
+
+        
+
+        ajaxCallApi(url2, '', apiCallback);
+
+        function ajaxCallApi(url, param, callback) {
+          $.ajax({
+            url: url,
+            type: 'POST',
+            data: param,
+            datatype: 'json',
+            success: callback
+          })
+        };
+
+        function apiCallback(json) {
+          console.log(json)
+        }
+      })
+    </script>
+  </body>
+</html>
